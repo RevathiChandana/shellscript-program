@@ -6,9 +6,8 @@ full_day_hours=8
 if [ $isPresent == 0 ]
 then
         echo "Employee is Present"
-	Daily_emp_wage=$(($wage_per_hr*$full_day_hours))
-	echo "Daily employee wage : " $Daily_emp_wage
+	      Daily_emp_wage=$(($wage_per_hr*$full_day_hours))
+	      echo "Daily employee wage : " $Daily_emp_wage
 else
-        echo "Employee is not Present"
+        echo " Employee is abscent"
 fi
-
