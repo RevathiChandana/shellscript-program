@@ -14,4 +14,4 @@ else
 fi
 salary=$(($empHrs*$empRatePerHr))
 echo "salary : " $salary
-echo " updated"
+
