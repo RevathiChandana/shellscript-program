@@ -6,6 +6,7 @@ emp_rate_per_hr=20;
 num_working_days=20;
 total_emp_hrs=0;
 total_working_days=0;
+declare -A daily_wage
 function getWorkingHours()
 {
         case $1 in
@@ -33,4 +34,5 @@ echo "total woring hours : " $total_emp_hrs
 total_salary=$(($total_emp_hrs*$emp_rate_per_hr))
 echo "total salary : " $total_salary
 echo "dailywage : " ${daily_wage[@]}
+echo "keys : " ${!daily_wage[@]}
 
