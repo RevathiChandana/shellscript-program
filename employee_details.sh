@@ -1,17 +1,13 @@
-#! /bin/bash 
-is_part_time=1;
-is_full_time=2;
-empRatePerHr=20;
-random_check=$((RANDOM%3));
-if [ $is_full_time -eq $random_check ]
+#! /bin/bash
+echo "welcome to employee wage computation"
+isPresent=$(( RANDOM%2 ))
+wage_per_hr=20
+full_day_hours=8
+if [ $isPresent == 0 ]
 then
-        empHrs=8;
-elif [ $is_part_time -eq $random_check ]
-then
-        empHrs=4
+        echo "Employee is Present"
+	      Daily_emp_wage=$(($wage_per_hr*$full_day_hours))
+	      echo "Daily employee wage : " $Daily_emp_wage
 else
-        empHrs=0
+        echo " Employee is abscent"
 fi
-salary=$(($empHrs*$empRatePerHr))
-echo "salary : " $salary
-
