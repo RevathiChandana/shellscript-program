@@ -15,6 +15,11 @@ function getWorkingHours()
         esac
         echo $work_hrs
 }
+function getEmpWage()
+{
+        local empHr=$1
+        echo $(($empHr*$emp_rate_per_hr))
+}
 while [[ $total_emp_hrs -lt $max_hrs_in_month &&
          $total_working_days -lt $num_working_days ]]
 do
@@ -22,8 +27,10 @@ do
         emp_check=$((RANDOM%3))
         work_hrs=`getWorkingHours $emp_check `
         total_emp_hrs=$(( $total_emp_hrs+$work_hrs ))
+        daily_wage[$total_working_days]=$( getEmpWage $work_hrs )
 done
 echo "total woring hours : " $total_emp_hrs
 total_salary=$(($total_emp_hrs*$emp_rate_per_hr))
 echo "total salary : " $total_salary
+echo "dailywage : " ${daily_wage[@]}
 
