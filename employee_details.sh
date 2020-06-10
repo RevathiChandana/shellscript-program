@@ -1,21 +1,29 @@
-#! /bin/bash 
+#! /bin/bash
 is_part_time=1;
 is_full_time=2;
-max_hrs_in_month=10;
+max_hrs_in_month=4;
 emp_rate_per_hr=20;
 num_working_days=20;
-total_emp_hr=0;
+total_emp_hrs=0;
 total_working_days=0;
-while [[ $total_emp_hr -lt $max_hrs_in_month && $total_working_dys -lt $num_working_days ]]
-do
-        ((total_working-days++))
-        emp_check=$((RANDOM%3));
-        case $emp_check in
-                $is_full_time)  emp_hr=8;;
-                $is_part_time)  emp_hr=4;;
-                *)      emp_hr=0;;
+function getWorkingHours()
+{
+        case $1 in
+                $is_full_time)  work_hrs=8;;
+                $is_part_time)  work_hrs=4;;
+                *)      work_hrs=0;;
         esac
-        total_emp_hr=$(($total_emp_hr+$emp_hr))
+        echo $work_hrs
+}
+while [[ $total_emp_hrs -lt $max_hrs_in_month &&
+         $total_working_days -lt $num_working_days ]]
+do
+        ((total_working_days++))
+        emp_check=$((RANDOM%3))
+        work_hrs=`getWorkingHours $emp_check `
+        total_emp_hrs=$(( $total_emp_hrs+$work_hrs ))
 done
-total_salary=$(($total_emp_hr+$emp_rate_per_hr))
+echo "total woring hours : " $total_emp_hrs
+total_salary=$(($total_emp_hrs*$emp_rate_per_hr))
 echo "total salary : " $total_salary
+
